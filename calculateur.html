@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Combien vous coûterait un piratage ? — Bouclier PME</title>
+<meta name="description" content="Calculez en 30 secondes les ventes que vous perdriez si votre WhatsApp Business ou votre page Facebook était piraté.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1418;--steel:#2F4858;--paper:#FFFFFF;--wash:#F1F4F6;--line:#D9E0E5;--muted:#5C6C78;
+--alarm:#C13128;--warn:#C27A0C;--safe:#2C7A5B;--accent:#12343B;--shell:#FFFFFF;--gold:#C99A2E}
+@media (prefers-color-scheme: dark){:root{--ink:#EDF2F4;--steel:#9FB4C0;--paper:#151C21;--wash:#1D262C;--line:#2C383F;
+--muted:#93A5B0;--alarm:#E4685E;--warn:#E6AC48;--safe:#4FAE84;--accent:#A8D5CE;--shell:#0E1418;--gold:#E0B456}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--shell);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,sans-serif;
+font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:20px 18px 64px}
+.brandbar{display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.shield{width:22px;height:26px;flex:none}
+.brandbar b{font-weight:800;font-size:15px}.brandbar span{color:var(--muted);font-size:14px}
+h1{font-size:clamp(28px,7.5vw,42px);line-height:1.08;font-weight:800;letter-spacing:-.03em;margin:0 0 16px}
+h2{font-size:19px;font-weight:800;margin:30px 0 12px;letter-spacing:-.015em}
+.lede{font-size:18px;color:var(--muted);margin:0 0 26px;max-width:52ch}
+button,input{font-family:inherit}
+.btn{display:block;width:100%;border:0;border-radius:10px;background:var(--ink);color:var(--shell);font-size:18px;
+font-weight:600;padding:16px 20px;cursor:pointer;text-align:center;text-decoration:none}
+.btn:hover{opacity:.88}.btn:focus-visible,.chip:focus-visible,.ans:focus-visible{outline:3px solid var(--warn);outline-offset:3px}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line);font-size:15px;padding:12px;margin-top:12px;font-weight:500}
+.btn-wa{background:var(--safe);color:#fff;margin-top:12px}
+.field{margin-bottom:20px}
+.field label{display:block;font-weight:600;margin-bottom:6px;font-size:16px}
+.field input[type=number]{width:100%;font-size:20px;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;
+background:var(--paper);color:var(--ink)}
+.field input[type=number]:focus{outline:3px solid var(--warn);outline-offset:1px;border-color:var(--accent)}
+.field input[type=range]{width:100%;accent-color:var(--accent);height:32px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.chip{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 14px;border-radius:999px;
+font-size:14.5px;font-weight:600;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);color:var(--shell);border-color:var(--accent)}
+.result{border:1.5px solid var(--line);border-radius:12px;background:var(--paper);padding:24px 22px;margin:26px 0 18px}
+.kicker{font-size:14px;color:var(--muted);font-weight:600;margin:0 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.big{font-size:clamp(34px,10vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0 0 8px}
+.big.r{color:var(--alarm)}.big.o{color:var(--warn)}.big.g{color:var(--safe)}
+.sub{color:var(--muted);font-size:15.5px;margin:0}
+.bar{height:9px;border-radius:5px;background:var(--wash);overflow:hidden;margin:16px 0 0}
+.bar i{display:block;height:100%;border-radius:5px;transition:width .5s cubic-bezier(.2,.7,.3,1)}
+.note{border-left:3px solid var(--line);background:var(--wash);padding:13px 15px;border-radius:0 8px 8px 0;font-size:14.5px;color:var(--muted);margin:14px 0}
+.note b{color:var(--ink)}
+.pitch{margin:32px 0 14px;padding:24px 22px;border-radius:12px;background:var(--accent);color:var(--shell)}
+.pitch h3{margin:0 0 10px;font-size:21px;font-weight:800;letter-spacing:-.02em}
+.pitch p{margin:0 0 18px;font-size:16px;opacity:.92}
+.pitch .btn{background:var(--shell);color:var(--ink)}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:34px;line-height:1.6}
+ul.flags{margin:8px 0 0;padding-left:20px}ul.flags li{margin:4px 0;font-size:15.5px}
+.hidden{display:none !important}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style></head><body><div class="wrap">
+<div class="brandbar"><svg class="shield" viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M11 1 20 4.5v8.2C20 18.6 16.2 23.2 11 25 5.8 23.2 2 18.6 2 12.7V4.5L11 1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12.6l3 3 5-5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<b>Bouclier PME</b><span>· Calculateur</span></div>
+
+<h1>Combien vous coûterait un piratage&nbsp;?</h1>
+<p class="lede">Si votre compte WhatsApp Business ou votre page Facebook était bloqué demain, combien de ventes perdriez-vous ? Entrez vos chiffres : c'est calculé en direct.</p>
+<div class="chips" role="group" aria-label="Exemples">
+  <button class="chip" data-c="15" data-p="3000" data-j="3">Petite boutique</button>
+  <button class="chip" data-c="40" data-p="5000" data-j="3" aria-pressed="true">Boutique moyenne</button>
+  <button class="chip" data-c="100" data-p="10000" data-j="3">Grosse activité</button>
+</div>
+<div class="field"><label for="clients">Clients servis par jour</label><input id="clients" type="number" inputmode="numeric" min="0" value="40"></div>
+<div class="field"><label for="panier">Panier moyen par client (FCFA)</label><input id="panier" type="number" inputmode="numeric" min="0" step="500" value="5000"></div>
+<div class="field"><label for="jours">Jours pour récupérer le compte : <b id="joursv">3</b></label><input id="jours" type="range" min="1" max="14" value="3"></div>
+<div class="result" aria-live="polite">
+  <p class="kicker">Ventes perdues pendant le blocage</p>
+  <p class="big r" id="loss">600 000 FCFA</p>
+  <p class="sub" id="detail"></p>
+</div>
+<p id="compare" class="note"></p>
+<div class="note"><b>Ce chiffre ne compte pas :</b> les clients qui ne reviendront pas, les arnaques envoyées en votre nom à vos contacts, ni le temps passé à tout reconfigurer. La vraie perte est donc souvent plus élevée.</div>
+
+<div id="cta" class=""><div class="pitch"><h3>Fermez les portes avant qu'un pirate ne les ouvre.</h3><p>Le Kit Bouclier PME vous guide pas à pas pour sécuriser WhatsApp Business, Facebook Pro, vos mots de passe et vos sauvegardes, en 2-3 heures et sans jargon.</p>
+<a class="btn" id="buy" href="#" target="_blank" rel="noopener">Obtenir le Kit Bouclier PME</a></div>
+<a class="btn btn-ghost" id="testlink" href="#">Faire d'abord le test gratuit des 10 failles</a>
+<a class="btn btn-ghost" id="wa" href="#" target="_blank" rel="noopener" style="margin-top:8px">Une question ? Écrivez-nous sur WhatsApp</a>
+<p class="foot">Bouclier PME · JM-Tech — sécurité digitale simple pour commerçants et PME.</p></div>
+</div><script>
+const CHARIOW_URL = "https://ofksgwmh.mychariow.store/mon-kit-bouclier-pme";
+const WHATSAPP_NUMBER = "2290153639833";
+const SITE_URL = "https://bouclier-pme.github.io";
+const $ = id => document.getElementById(id);
+function wireLinks(src, extra){
+  $('buy').href = CHARIOW_URL + "?src=" + src + (extra||"");
+  $('testlink').href = SITE_URL;
+  $('wa').href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Bonjour, j'ai utilisé votre outil gratuit et j'ai une question sur le Kit Bouclier PME.");
+}
+
+const KIT_PRICE = 11900;
+const fmt = n => Math.round(n).toLocaleString('fr-FR') + " FCFA";
+function calc(){
+  const c = Math.max(0, +$('clients').value||0), p = Math.max(0, +$('panier').value||0), j = +$('jours').value;
+  $('joursv').textContent = j;
+  const loss = c*p*j;
+  $('loss').textContent = fmt(loss);
+  $('detail').textContent = c.toLocaleString('fr-FR')+" clients × "+p.toLocaleString('fr-FR')+" FCFA × "+j+" jour"+(j>1?"s":"");
+  const cmp = $('compare');
+  if (loss > KIT_PRICE){
+    const pct = KIT_PRICE/loss*100;
+    cmp.innerHTML = "Le Kit Bouclier PME coûte <b>"+KIT_PRICE.toLocaleString('fr-FR')+" FCFA</b>, soit <b>"+(pct<1?"moins de 1":pct.toFixed(pct<10?1:0).replace('.',','))+" %</b> de cette perte. Un seul piratage évité le rembourse largement.";
+  } else if (loss > 0){
+    cmp.innerHTML = "Même une petite perte compte : et le plus coûteux reste la confiance des clients que vous ne revoyez pas.";
+  } else { cmp.innerHTML = "Entrez le nombre de clients et le panier moyen pour voir le résultat."; }
+}
+['clients','panier','jours'].forEach(id => $(id).addEventListener('input', () => {
+  document.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed','false')); calc();
+}));
+document.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => {
+  $('clients').value=b.dataset.c; $('panier').value=b.dataset.p; $('jours').value=b.dataset.j; calc();
+  document.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true');
+}));
+wireLinks('calculateur'); calc();
+</script></body></html>

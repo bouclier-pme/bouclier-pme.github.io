@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arnaque ou pas ? Le quiz — Bouclier PME</title>
+<meta name="description" content="6 messages réels, à vous de repérer les arnaques. Testez vos réflexes en 2 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1418;--steel:#2F4858;--paper:#FFFFFF;--wash:#F1F4F6;--line:#D9E0E5;--muted:#5C6C78;
+--alarm:#C13128;--warn:#C27A0C;--safe:#2C7A5B;--accent:#12343B;--shell:#FFFFFF;--gold:#C99A2E}
+@media (prefers-color-scheme: dark){:root{--ink:#EDF2F4;--steel:#9FB4C0;--paper:#151C21;--wash:#1D262C;--line:#2C383F;
+--muted:#93A5B0;--alarm:#E4685E;--warn:#E6AC48;--safe:#4FAE84;--accent:#A8D5CE;--shell:#0E1418;--gold:#E0B456}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--shell);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,sans-serif;
+font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:20px 18px 64px}
+.brandbar{display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.shield{width:22px;height:26px;flex:none}
+.brandbar b{font-weight:800;font-size:15px}.brandbar span{color:var(--muted);font-size:14px}
+h1{font-size:clamp(28px,7.5vw,42px);line-height:1.08;font-weight:800;letter-spacing:-.03em;margin:0 0 16px}
+h2{font-size:19px;font-weight:800;margin:30px 0 12px;letter-spacing:-.015em}
+.lede{font-size:18px;color:var(--muted);margin:0 0 26px;max-width:52ch}
+button,input{font-family:inherit}
+.btn{display:block;width:100%;border:0;border-radius:10px;background:var(--ink);color:var(--shell);font-size:18px;
+font-weight:600;padding:16px 20px;cursor:pointer;text-align:center;text-decoration:none}
+.btn:hover{opacity:.88}.btn:focus-visible,.chip:focus-visible,.ans:focus-visible{outline:3px solid var(--warn);outline-offset:3px}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line);font-size:15px;padding:12px;margin-top:12px;font-weight:500}
+.btn-wa{background:var(--safe);color:#fff;margin-top:12px}
+.field{margin-bottom:20px}
+.field label{display:block;font-weight:600;margin-bottom:6px;font-size:16px}
+.field input[type=number]{width:100%;font-size:20px;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;
+background:var(--paper);color:var(--ink)}
+.field input[type=number]:focus{outline:3px solid var(--warn);outline-offset:1px;border-color:var(--accent)}
+.field input[type=range]{width:100%;accent-color:var(--accent);height:32px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.chip{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 14px;border-radius:999px;
+font-size:14.5px;font-weight:600;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);color:var(--shell);border-color:var(--accent)}
+.result{border:1.5px solid var(--line);border-radius:12px;background:var(--paper);padding:24px 22px;margin:26px 0 18px}
+.kicker{font-size:14px;color:var(--muted);font-weight:600;margin:0 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.big{font-size:clamp(34px,10vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0 0 8px}
+.big.r{color:var(--alarm)}.big.o{color:var(--warn)}.big.g{color:var(--safe)}
+.sub{color:var(--muted);font-size:15.5px;margin:0}
+.bar{height:9px;border-radius:5px;background:var(--wash);overflow:hidden;margin:16px 0 0}
+.bar i{display:block;height:100%;border-radius:5px;transition:width .5s cubic-bezier(.2,.7,.3,1)}
+.note{border-left:3px solid var(--line);background:var(--wash);padding:13px 15px;border-radius:0 8px 8px 0;font-size:14.5px;color:var(--muted);margin:14px 0}
+.note b{color:var(--ink)}
+.pitch{margin:32px 0 14px;padding:24px 22px;border-radius:12px;background:var(--accent);color:var(--shell)}
+.pitch h3{margin:0 0 10px;font-size:21px;font-weight:800;letter-spacing:-.02em}
+.pitch p{margin:0 0 18px;font-size:16px;opacity:.92}
+.pitch .btn{background:var(--shell);color:var(--ink)}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:34px;line-height:1.6}
+ul.flags{margin:8px 0 0;padding-left:20px}ul.flags li{margin:4px 0;font-size:15.5px}
+.hidden{display:none !important}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style></head><body><div class="wrap">
+<div class="brandbar"><svg class="shield" viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M11 1 20 4.5v8.2C20 18.6 16.2 23.2 11 25 5.8 23.2 2 18.6 2 12.7V4.5L11 1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12.6l3 3 5-5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<b>Bouclier PME</b><span>· Quiz</span></div>
+
+<div id="intro">
+<h1>Arnaque ou pas&nbsp;?</h1>
+<p class="lede">6 messages, comme ceux que reçoivent les commerçants tous les jours. À vous de dire lesquels sont des pièges. Attention : certains sont tout à fait normaux.</p>
+<button class="btn" id="start">Commencer le quiz</button>
+</div>
+<div id="quiz" class="hidden">
+  <p class="kicker" id="counter"></p>
+  <div class="msg" id="msg"><div class="from" id="from"></div><div class="bubble" id="bubble"></div></div>
+  <div id="answers" class="ansrow">
+    <button class="ans scam" id="bscam">C'est une arnaque</button>
+    <button class="ans okay" id="bok">Message normal</button>
+  </div>
+  <div id="feedback" class="hidden">
+    <div class="fb" id="fb"></div>
+    <button class="btn" id="next" style="margin-top:16px">Message suivant</button>
+  </div>
+</div>
+<div id="result" class="hidden">
+  <div class="result"><p class="kicker">Votre score</p><p class="big" id="score"></p><p class="sub" id="rtext"></p><div class="bar"><i id="barfill" style="width:0%"></i></div></div>
+  <a class="btn btn-wa" id="share" href="#" target="_blank" rel="noopener">Défier mes contacts sur WhatsApp</a>
+</div>
+<style>
+.msg{border:1.5px solid var(--line);border-radius:14px;background:var(--wash);padding:16px;margin:8px 0 18px}
+.from{font-size:13.5px;font-weight:700;color:var(--muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.03em}
+.bubble{background:var(--paper);border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:14px 16px;font-size:17px;line-height:1.45}
+.ansrow{display:grid;gap:12px}
+.ans{text-align:left;border:1.5px solid var(--line);border-radius:10px;padding:16px 18px;font-size:18px;font-weight:700;cursor:pointer;background:var(--paper);color:var(--ink)}
+.ans.scam:hover{border-color:var(--alarm)}.ans.okay:hover{border-color:var(--safe)}
+.fb{border-radius:12px;padding:18px;border:1.5px solid var(--line);background:var(--paper)}
+.fb.good{border-color:var(--safe)}.fb.bad{border-color:var(--alarm)}
+.fb h3{margin:0 0 6px;font-size:19px}.fb.good h3{color:var(--safe)}.fb.bad h3{color:var(--alarm)}
+.fb p{margin:6px 0;font-size:15.5px}.fb .rule{font-weight:700;margin-top:10px}
+</style>
+
+<div id="cta" class="hidden"><div class="pitch"><h3>Apprenez à repérer les pièges avant qu'ils ne coûtent cher.</h3><p>Le Kit Bouclier PME contient des scénarios réels (réussite et échec) et la procédure à suivre si un compte est piraté, pour vous et vos employés.</p>
+<a class="btn" id="buy" href="#" target="_blank" rel="noopener">Obtenir le Kit Bouclier PME</a></div>
+<a class="btn btn-ghost" id="testlink" href="#">Faire d'abord le test gratuit des 10 failles</a>
+<a class="btn btn-ghost" id="wa" href="#" target="_blank" rel="noopener" style="margin-top:8px">Une question ? Écrivez-nous sur WhatsApp</a>
+<p class="foot">Bouclier PME · JM-Tech — sécurité digitale simple pour commerçants et PME.</p></div>
+</div><script>
+const CHARIOW_URL = "https://ofksgwmh.mychariow.store/mon-kit-bouclier-pme";
+const WHATSAPP_NUMBER = "2290153639833";
+const SITE_URL = "https://bouclier-pme.github.io";
+const $ = id => document.getElementById(id);
+function wireLinks(src, extra){
+  $('buy').href = CHARIOW_URL + "?src=" + src + (extra||"");
+  $('testlink').href = SITE_URL;
+  $('wa').href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Bonjour, j'ai utilisé votre outil gratuit et j'ai une question sur le Kit Bouclier PME.");
+}
+
+const Q = [
+ {from:"Appel puis SMS · numéro inconnu", text:"Bonjour, ici le service Mobile Money. Un transfert de 75 000 F a été fait par erreur sur votre compte. Pour l'annuler, tapez le code que je vais vous dicter, sinon votre compte sera bloqué.", scam:true,
+  why:["Un opérateur ne vous demande jamais de taper un code pour « annuler » une opération : c'est vous qui validez votre propre transfert vers l'escroc.","L'urgence et la menace de blocage servent à vous empêcher de réfléchir."],
+  rule:"Raccrochez. Appelez le service client avec le numéro officiel."},
+ {from:"WhatsApp · un contact enregistré", text:"Salut ! Je t'ai envoyé un code par erreur par SMS, tu peux me le renvoyer vite stp ? 🙏", scam:true,
+  why:["Ce code est celui de VOTRE compte WhatsApp : le donner, c'est offrir votre compte.","Le compte de votre ami est probablement déjà piraté : c'est lui qui vous écrit, vous attaquant à votre tour."],
+  rule:"Ne partagez jamais un code reçu par SMS. Appelez votre ami pour vérifier."},
+ {from:"SMS · vous venez d'installer WhatsApp Business sur un nouveau téléphone", text:"Votre code WhatsApp Business : 482-193. Ne le partagez avec personne.", scam:false,
+  why:["Vous venez de le demander vous-même, en installant l'application.","Le message ne vous demande rien : pas de lien, pas d'argent, pas d'action urgente."],
+  rule:"Un code attendu est normal. Un code que vous n'avez pas demandé, ou que quelqu'un vous réclame, c'est le danger."},
+ {from:"Messenger · page « Support Facebook » non vérifiée", text:"⚠️ Votre page sera supprimée dans 24h pour violation des règles. Contestez maintenant : fb-pro-verification.net/appel", scam:true,
+  why:["Urgence + menace de suppression : la recette classique du phishing.","Le lien n'est pas celui de Facebook : il a été créé pour copier la page de connexion et voler vos identifiants."],
+  rule:"N'ouvrez pas le lien. Vérifiez depuis l'application Facebook, rubrique Assistance."},
+ {from:"WhatsApp · numéro inconnu", text:"Offre d'emploi, organisation internationale : poste de chauffeur, 250 000 F par mois. Pour valider votre dossier, envoyez 5 000 F de frais par Mobile Money au 01 00 00 00 00.", scam:true,
+  why:["Une vraie institution ne fait jamais payer un candidat.","Une offre trop belle, reçue sans que vous ayez postulé, est un appât."],
+  rule:"Ne payez jamais pour obtenir un emploi. Vérifiez sur le site officiel de l'organisation."},
+ {from:"WhatsApp · Mme Adjovi, fournisseur habituel (contact enregistré)", text:"Bonjour, votre commande est prête. Je passe demain vers 10h à la boutique, paiement à la livraison comme d'habitude 👍", scam:false,
+  why:["Contact connu, message cohérent avec vos habitudes.","Aucune demande d'argent à l'avance, de code ou de lien."],
+  rule:"Restez vigilant : si cette personne change soudain de numéro de paiement, appelez-la avant d'envoyer quoi que ce soit."}
+];
+let i = 0, score = 0, answered = false;
+function show(){
+  const q = Q[i]; answered = false;
+  $('counter').textContent = "Message " + (i+1) + " sur " + Q.length;
+  $('from').textContent = q.from; $('bubble').textContent = q.text;
+  $('feedback').classList.add('hidden'); $('answers').classList.remove('hidden');
+}
+function answer(sayScam){
+  if (answered) return; answered = true;
+  const q = Q[i], ok = (sayScam === q.scam); if (ok) score++;
+  $('answers').classList.add('hidden');
+  const fb = $('fb'); fb.className = 'fb ' + (ok ? 'good' : 'bad');
+  fb.innerHTML = "<h3>" + (ok ? "Bien vu !" : "Raté.") + " C'était " + (q.scam ? "une arnaque." : "un message normal.") + "</h3>"
+    + q.why.map(t => "<p>" + t + "</p>").join("") + "<p class='rule'>Le bon réflexe : " + q.rule + "</p>";
+  $('next').textContent = (i === Q.length-1) ? "Voir mon score" : "Message suivant";
+  $('feedback').classList.remove('hidden');
+}
+function finish(){
+  $('quiz').classList.add('hidden'); $('result').classList.remove('hidden');
+  $('score').textContent = score + " / " + Q.length;
+  const bar = $('barfill'); bar.style.width = (score/Q.length*100) + '%';
+  let t, col;
+  if (score >= 5){ t = "Bon réflexe ! Vous repérez les pièges. Pensez à former aussi vos employés : un seul clic suffit à tout perdre."; col = 'var(--safe)'; }
+  else if (score >= 3){ t = "Vous êtes à un message de vous faire avoir. Les escrocs savent exactement sur quoi jouer : l'urgence, l'autorité, le secret."; col = 'var(--warn)'; }
+  else { t = "Zone dangereuse : vous risquez de tomber dans le piège. Rassurez-vous, ça s'apprend vite."; col = 'var(--alarm)'; }
+  $('rtext').textContent = t; bar.style.background = col;
+  $('score').className = 'big ' + (score>=5 ? 'g' : score>=3 ? 'o' : 'r');
+  $('share').href = "https://wa.me/?text=" + encodeURIComponent("J'ai eu " + score + "/" + Q.length + " au quiz « Arnaque ou pas ? ». Et toi, tu repères les pièges ? " + SITE_URL + "/quiz-arnaque.html");
+  wireLinks('quiz', '&score=' + score); $('cta').classList.remove('hidden');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+$('start').onclick = () => { $('intro').classList.add('hidden'); $('quiz').classList.remove('hidden'); show(); };
+$('bscam').onclick = () => answer(true); $('bok').onclick = () => answer(false);
+$('next').onclick = () => { if (i === Q.length-1) finish(); else { i++; show(); } };
+wireLinks('quiz');
+</script></body></html>

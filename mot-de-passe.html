@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Combien de temps pour craquer votre mot de passe ? — Bouclier PME</title>
+<meta name="description" content="Découvrez en 20 secondes si votre mot de passe tiendrait face à un pirate, sans jamais le taper.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1418;--steel:#2F4858;--paper:#FFFFFF;--wash:#F1F4F6;--line:#D9E0E5;--muted:#5C6C78;
+--alarm:#C13128;--warn:#C27A0C;--safe:#2C7A5B;--accent:#12343B;--shell:#FFFFFF;--gold:#C99A2E}
+@media (prefers-color-scheme: dark){:root{--ink:#EDF2F4;--steel:#9FB4C0;--paper:#151C21;--wash:#1D262C;--line:#2C383F;
+--muted:#93A5B0;--alarm:#E4685E;--warn:#E6AC48;--safe:#4FAE84;--accent:#A8D5CE;--shell:#0E1418;--gold:#E0B456}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--shell);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,sans-serif;
+font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:20px 18px 64px}
+.brandbar{display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.shield{width:22px;height:26px;flex:none}
+.brandbar b{font-weight:800;font-size:15px}.brandbar span{color:var(--muted);font-size:14px}
+h1{font-size:clamp(28px,7.5vw,42px);line-height:1.08;font-weight:800;letter-spacing:-.03em;margin:0 0 16px}
+h2{font-size:19px;font-weight:800;margin:30px 0 12px;letter-spacing:-.015em}
+.lede{font-size:18px;color:var(--muted);margin:0 0 26px;max-width:52ch}
+button,input{font-family:inherit}
+.btn{display:block;width:100%;border:0;border-radius:10px;background:var(--ink);color:var(--shell);font-size:18px;
+font-weight:600;padding:16px 20px;cursor:pointer;text-align:center;text-decoration:none}
+.btn:hover{opacity:.88}.btn:focus-visible,.chip:focus-visible,.ans:focus-visible{outline:3px solid var(--warn);outline-offset:3px}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line);font-size:15px;padding:12px;margin-top:12px;font-weight:500}
+.btn-wa{background:var(--safe);color:#fff;margin-top:12px}
+.field{margin-bottom:20px}
+.field label{display:block;font-weight:600;margin-bottom:6px;font-size:16px}
+.field input[type=number]{width:100%;font-size:20px;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;
+background:var(--paper);color:var(--ink)}
+.field input[type=number]:focus{outline:3px solid var(--warn);outline-offset:1px;border-color:var(--accent)}
+.field input[type=range]{width:100%;accent-color:var(--accent);height:32px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.chip{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 14px;border-radius:999px;
+font-size:14.5px;font-weight:600;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);color:var(--shell);border-color:var(--accent)}
+.result{border:1.5px solid var(--line);border-radius:12px;background:var(--paper);padding:24px 22px;margin:26px 0 18px}
+.kicker{font-size:14px;color:var(--muted);font-weight:600;margin:0 0 6px;text-transform:uppercase;letter-spacing:.04em}
+.big{font-size:clamp(34px,10vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0 0 8px}
+.big.r{color:var(--alarm)}.big.o{color:var(--warn)}.big.g{color:var(--safe)}
+.sub{color:var(--muted);font-size:15.5px;margin:0}
+.bar{height:9px;border-radius:5px;background:var(--wash);overflow:hidden;margin:16px 0 0}
+.bar i{display:block;height:100%;border-radius:5px;transition:width .5s cubic-bezier(.2,.7,.3,1)}
+.note{border-left:3px solid var(--line);background:var(--wash);padding:13px 15px;border-radius:0 8px 8px 0;font-size:14.5px;color:var(--muted);margin:14px 0}
+.note b{color:var(--ink)}
+.pitch{margin:32px 0 14px;padding:24px 22px;border-radius:12px;background:var(--accent);color:var(--shell)}
+.pitch h3{margin:0 0 10px;font-size:21px;font-weight:800;letter-spacing:-.02em}
+.pitch p{margin:0 0 18px;font-size:16px;opacity:.92}
+.pitch .btn{background:var(--shell);color:var(--ink)}
+.foot{color:var(--muted);font-size:13px;text-align:center;margin-top:34px;line-height:1.6}
+ul.flags{margin:8px 0 0;padding-left:20px}ul.flags li{margin:4px 0;font-size:15.5px}
+.hidden{display:none !important}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+</style></head><body><div class="wrap">
+<div class="brandbar"><svg class="shield" viewBox="0 0 22 26" fill="none" aria-hidden="true"><path d="M11 1 20 4.5v8.2C20 18.6 16.2 23.2 11 25 5.8 23.2 2 18.6 2 12.7V4.5L11 1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12.6l3 3 5-5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<b>Bouclier PME</b><span>· Mot de passe</span></div>
+
+<h1>Combien de temps pour craquer votre mot de passe&nbsp;?</h1>
+<p class="lede">Décrivez votre mot de passe habituel : sa longueur et ce qu'il contient. <b>Ne tapez jamais votre vrai mot de passe</b> : cet outil ne vous le demande pas.</p>
+<div class="chips" role="group" aria-label="Exemples">
+  <button class="chip" data-p="name">Prénom + année</button>
+  <button class="chip" data-p="rand8">8 caractères au hasard</button>
+  <button class="chip" data-p="phrase">Phrase de 3 mots + chiffre + symbole</button>
+</div>
+<div class="field"><label for="len">Longueur : <b id="lenv">8</b> caractères</label><input id="len" type="range" min="4" max="24" value="8"></div>
+<div class="field"><label>Ce qu'il contient</label>
+<div class="chips" id="types">
+  <button class="chip" data-t="lower" aria-pressed="true">minuscules</button>
+  <button class="chip" data-t="upper" aria-pressed="true">MAJUSCULES</button>
+  <button class="chip" data-t="digit" aria-pressed="true">chiffres</button>
+  <button class="chip" data-t="sym" aria-pressed="false">symboles (!@#…)</button>
+</div>
+<button class="chip" id="dict" aria-pressed="false">Contient un prénom, un mot courant ou une année</button></div>
+<div class="result" aria-live="polite">
+  <p class="kicker">Temps estimé pour le deviner</p>
+  <p class="big r" id="time">—</p>
+  <p class="sub" id="verdict"></p>
+  <div class="bar"><i id="barfill" style="width:0%"></i></div>
+</div>
+<div class="note" id="tip"></div>
+<div class="note"><b>Comment lire ce résultat :</b> estimation indicative d'une attaque très rapide (10 milliards d'essais par seconde) sur un mot de passe volé et mal protégé. Les sites sérieux ralentissent les attaques, mais un mot de passe faible tombe quand même. Les vrais pirates testent d'abord les prénoms, les mots courants et les dates : c'est pourquoi « Josue2000 » ne tient pas, même avec des majuscules et des chiffres.</div>
+
+<div id="cta" class=""><div class="pitch"><h3>Ne plus jamais réutiliser le même mot de passe.</h3><p>Le Kit Bouclier PME vous montre comment créer des mots de passe solides et ne plus jamais les oublier, avec un gestionnaire gratuit déjà sur votre téléphone.</p>
+<a class="btn" id="buy" href="#" target="_blank" rel="noopener">Obtenir le Kit Bouclier PME</a></div>
+<a class="btn btn-ghost" id="testlink" href="#">Faire d'abord le test gratuit des 10 failles</a>
+<a class="btn btn-ghost" id="wa" href="#" target="_blank" rel="noopener" style="margin-top:8px">Une question ? Écrivez-nous sur WhatsApp</a>
+<p class="foot">Bouclier PME · JM-Tech — sécurité digitale simple pour commerçants et PME.</p></div>
+</div><script>
+const CHARIOW_URL = "https://ofksgwmh.mychariow.store/mon-kit-bouclier-pme";
+const WHATSAPP_NUMBER = "2290153639833";
+const SITE_URL = "https://bouclier-pme.github.io";
+const $ = id => document.getElementById(id);
+function wireLinks(src, extra){
+  $('buy').href = CHARIOW_URL + "?src=" + src + (extra||"");
+  $('testlink').href = SITE_URL;
+  $('wa').href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Bonjour, j'ai utilisé votre outil gratuit et j'ai une question sur le Kit Bouclier PME.");
+}
+
+const RATE = 1e10, YEAR = 31536000;
+const sizes = {lower:26, upper:26, digit:10, sym:33};
+function human(s){
+  if (s < 1) return "Instantané";
+  if (s < 60) return Math.round(s) + " seconde" + (Math.round(s)>1?"s":"");
+  if (s < 3600) return Math.round(s/60) + " minutes";
+  if (s < 86400) return Math.round(s/3600) + " heures";
+  if (s < YEAR) return Math.round(s/86400) + " jours";
+  const y = s/YEAR;
+  if (y < 1e6) return Math.round(y).toLocaleString('fr-FR') + (Math.round(y)>1?" ans":" an");
+  if (y < 1e9) return Math.round(y/1e6).toLocaleString('fr-FR') + " millions d'années";
+  if (y < 1.38e10) return (y/1e9).toFixed(1).replace('.',',') + " milliards d'années";
+  return "Plus que l'âge de l'univers";
+}
+function calc(){
+  const len = +$('len').value; $('lenv').textContent = len;
+  let cs = 0; document.querySelectorAll('#types .chip').forEach(b => { if (b.getAttribute('aria-pressed')==='true') cs += sizes[b.dataset.t]; });
+  const dict = $('dict').getAttribute('aria-pressed')==='true';
+  let s;
+  if (dict) s = 0.5;
+  else if (cs === 0){ $('time').textContent='—'; $('verdict').textContent='Choisissez au moins un type de caractères.'; $('barfill').style.width='0%'; $('tip').innerHTML=''; return; }
+  else s = Math.pow(cs, len) / 2 / RATE;
+  $('time').textContent = human(s);
+  const t = $('time'), bar = $('barfill'); t.className = 'big';
+  let v, col;
+  if (s < 86400){ t.classList.add('r'); col='var(--alarm)'; v = dict ? "Un pirate teste d'abord ces mots-là : il suffit de quelques secondes." : "Cassé en moins d'une journée : à changer d'urgence."; }
+  else if (s < 10*YEAR){ t.classList.add('o'); col='var(--warn)'; v = "Fragile : il tiendrait quelque temps, mais pas face à une attaque sérieuse."; }
+  else { t.classList.add('g'); col='var(--safe)'; v = "Solide : hors de portée d'une attaque réaliste."; }
+  $('verdict').textContent = v; bar.style.background = col;
+  bar.style.width = Math.min(100, Math.max(4, (Math.log10(Math.max(s,1))+1)/18*100)) + '%';
+  $('tip').innerHTML = s < 10*YEAR
+    ? "<b>La méthode du Kit :</b> 3 mots sans lien + 1 chiffre + 1 symbole (par exemple « Table47-Lion!Route »). Facile à retenir, très long à deviner. Et avec un gestionnaire de mots de passe, vous n'avez même plus à les retenir."
+    : "<b>Bien joué.</b> Reste une règle : un mot de passe différent pour chaque compte. S'il est réutilisé partout, une seule fuite suffit à tout ouvrir. Le Module 3 du Kit explique comment ne plus jamais les oublier.";
+}
+function setTypes(arr){ document.querySelectorAll('#types .chip').forEach(b => b.setAttribute('aria-pressed', arr.includes(b.dataset.t))); }
+document.querySelectorAll('#types .chip, #dict').forEach(b => b.addEventListener('click', () => {
+  b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true' ? 'false' : 'true');
+  document.querySelectorAll('.chips[aria-label=Exemples] .chip').forEach(x => x.setAttribute('aria-pressed','false')); calc();
+}));
+$('len').addEventListener('input', () => { document.querySelectorAll('.chips[aria-label=Exemples] .chip').forEach(x => x.setAttribute('aria-pressed','false')); calc(); });
+const presets = { name:{len:9, t:['lower','upper','digit'], dict:true}, rand8:{len:8, t:['lower','upper','digit','sym'], dict:false}, phrase:{len:18, t:['lower','upper','digit','sym'], dict:false} };
+document.querySelectorAll('.chips[aria-label=Exemples] .chip').forEach(b => b.addEventListener('click', () => {
+  const p = presets[b.dataset.p]; $('len').value = p.len; setTypes(p.t); $('dict').setAttribute('aria-pressed', p.dict);
+  document.querySelectorAll('.chips[aria-label=Exemples] .chip').forEach(x => x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true'); calc();
+}));
+wireLinks('motdepasse'); calc();
+</script></body></html>

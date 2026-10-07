@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="fr"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1DEF0PW3L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y1DEF0PW3L');
+</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Combien vous coûterait un piratage ? — Bouclier PME</title>
 <meta name="description" content="Calculez en 30 secondes les ventes que vous perdriez si votre WhatsApp Business ou votre page Facebook était piraté.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,7 +94,7 @@ const WHATSAPP_NUMBER = "2290153639833";
 const SITE_URL = "https://bouclier-pme.github.io";
 const $ = id => document.getElementById(id);
 function wireLinks(src, extra){
-  $('buy').href = CHARIOW_URL + "?src=" + src + (extra||"");
+  $('buy').href = CHARIOW_URL + "?utm_source=bouclier-pme&utm_medium=outil&utm_campaign=" + src + (extra||"");
   $('testlink').href = SITE_URL;
   $('wa').href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent("Bonjour, j'ai utilisé votre outil gratuit et j'ai une question sur le Kit Bouclier PME.");
 }

@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1DEF0PW3L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y1DEF0PW3L');
+</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Le Test des 10 Failles — Bouclier PME</title>
@@ -348,7 +357,7 @@ function showResult(){
 
   // Le score est passé à Chariow en paramètre : utile pour savoir
   // quel niveau de risque achète le plus.
-  $('buy').href = `${CHARIOW_URL}?src=test10&score=${score}`;
+  $('buy').href = `${CHARIOW_URL}?utm_source=bouclier-pme&utm_medium=outil&utm_campaign=test10&score=${score}`;
 
   $('wa').onclick = () => {
     const msg = `Bonjour, je viens de faire le Test des 10 Failles. Mon score est de ${score}/10 points de risque et j'ai une question sur le Kit Bouclier PME.`;
